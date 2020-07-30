@@ -13,5 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', 'Movies@getCache')->name('movie.home');
 Route::get('/movies', 'Movies@listMovies')->name('movie.list');
 Route::get('/movie/{id}', 'Movies@movieDetail')->name('movie.detail');

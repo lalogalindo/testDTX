@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
 
 class Movies extends Controller
 {
@@ -14,6 +15,22 @@ class Movies extends Controller
     {
         $this->apiKey  = env('TMDB_API_KEY');
         $this->baseUri = env('TMDB_API_URL');
+        if (!Cache::has('baseUrl')) {
+            return redirect()->route('movie.home');
+        }
+    }
+
+    public function getCache()
+    {
+        $seconds = 15 * 86400; // 15 days
+        $method = '/configuration';
+
+        $response = Http::get($this->baseUri.$method, ['api_key' => $this->apiKey]);
+
+        Cache::put('baseUrl', $response->json()['images']['base_url'], $seconds );
+        Cache::put('posterSizes', $response->json()['images']['poster_sizes'][3], $seconds );
+        
+        return redirect()->route('movie.list');
     }
 
     public function listMovies()
@@ -25,7 +42,11 @@ class Movies extends Controller
             'page'    => 1
         ]);
 
-        return view('layouts/listPage')->with('movies',$response->json()['results']);
+        return view('layouts/listPage',[
+            'movies'       => $response->json()['results'],
+            'baseUrl'      => Cache::get('baseUrl'),
+            'poster_sizes' => Cache::get('posterSizes')
+        ]);
     }
 
     public function movieDetail($id)
