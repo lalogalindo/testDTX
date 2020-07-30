@@ -15530,6 +15530,39 @@ a.text-dark:focus {
   border: solid thin red;
 }
 
+.movieCard__image {
+  width: 208px;
+  height: 312px;
+}
+
+.movieCard__content {
+  padding: 26px 10px 12px 10px;
+  position: relative;
+  white-space: normal;
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.movieCard__content--title {
+  font-size: 1em;
+  margin: 0;
+  width: 100%;
+  word-wrap: normal;
+  overflow-wrap: break-word;
+}
+
+.movieCard__content--title a {
+  color: #000;
+  font-weight: 700;
+}
+
+.movieCard__content--vote-average {
+  position: absolute;
+  top: -19px;
+  left: 10px;
+}
+
 .footer {
   background-image: radial-gradient(at 30% top, #031d33 0%, #032541 70%);
 }

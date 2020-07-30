@@ -3,4 +3,34 @@
     margin-left: 30px;
     margin-top: 30px;
     border: solid thin red;
+
+    &__image {
+        width: 208px;
+        height: 312px;
+    }
+    &__content {
+        padding: 26px 10px 12px 10px;
+        position: relative;
+        white-space: normal;
+        display: flex;
+        align-content: flex-start;
+        flex-wrap: wrap;
+        &--title {
+            font-size: 1em;
+            margin: 0;
+            width: 100%;
+            word-wrap: normal;
+            overflow-wrap: break-word;
+            
+            a {
+                color: $black;
+                font-weight: 700;
+            }
+        }
+        &--vote-average {
+            position: absolute;
+            top: -19px;
+            left: 10px;
+        }
+    }
 }
