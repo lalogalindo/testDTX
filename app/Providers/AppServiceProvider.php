@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Cache;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,10 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // $tmdbUrl = env('TMDB_API_URL');
-        // $this->app->singleton(Client::class, function($app) use ($baseUrl) {
-        //     return new Client(['base_uri' => $baseUrl]);
-        // });
+        if (!Cache::has('baseUrl')) {
+            return redirect()->route('movie.home');
+        }
     }
 
     /**

@@ -15,9 +15,6 @@ class Movies extends Controller
     {
         $this->apiKey  = env('TMDB_API_KEY');
         $this->baseUri = env('TMDB_API_URL');
-        if (!Cache::has('baseUrl')) {
-            return redirect()->route('movie.home');
-        }
     }
 
     public function getCache()
@@ -35,10 +32,6 @@ class Movies extends Controller
 
     public function listMovies()
     {
-        if (!Cache::has('baseUrl')) {
-            return redirect()->route('movie.home');
-        }
-
         $method = '/movie/popular';
 
         $response = Http::get($this->baseUri.$method,[
@@ -55,9 +48,6 @@ class Movies extends Controller
 
     public function movieDetail($id)
     {
-        if (!Cache::has('baseUrl')) {
-            return redirect()->route('movie.home');
-        }
         return view('layouts/movieDetail',['movieID' => $id]);
     }
 }
