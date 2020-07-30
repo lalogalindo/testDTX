@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Cache;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,9 +14,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (!Cache::has('baseUrl')) {
-            return redirect()->route('movie.home');
-        }
     }
 
     /**
