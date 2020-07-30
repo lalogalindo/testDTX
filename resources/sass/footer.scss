@@ -1,0 +1,23 @@
+.footer {
+    background-image: radial-gradient(at 30% top, rgba(3,29,51,1) 0%, rgba($tmdbDarkBlue, 1) 70%);
+
+    &__logo {
+        width: 130px;
+        height: 94px;
+    }
+
+    &__navigation {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 80px;
+        padding-bottom: 80px;
+        max-width: 760px;
+        margin: auto;
+    }
+    
+    &__menu {
+        &--item {
+            color: $white;
+        }
+    }
+}
