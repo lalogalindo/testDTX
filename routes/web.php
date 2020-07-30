@@ -13,6 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/movies', 'Movies@listMovies')->name('movie.list');
+Route::get('/movie/{id}', 'Movies@movieDetail')->name('movie.detail');
