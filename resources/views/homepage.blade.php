@@ -22,6 +22,9 @@
             </div>
             @yield('content')
 		</div>
+		@section('footer')
+			@include('components.footer')
+		@show
 		<script src="{{ mix('/js/app.js') }}"></script>
 	</body>
 </html>

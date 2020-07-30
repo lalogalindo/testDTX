@@ -3,22 +3,26 @@
 
 @section('content')
     <h1>Popular Movies</h1>
-    <p>Listado de Jamon</p>
-    @foreach($movies as $movie)
-        <p><canvas class="canvasPercentage" data-percentage="{{$movie['vote_average']}}" width="40" height="40"></canvas></p>
-        <p>"popularity"        => {{$movie['popularity']}}</p>
-        <p>"vote_count"        => {{$movie['vote_count']}}</p>
-        <p>"video"             => {{$movie['video']}}</p>
-        <p>"poster_path"       => {{$movie['poster_path']}}</p>
-        <p>"id"                => {{$movie['id']}}</p>
-        <p>"adult"             => {{$movie['adult']}}</p>
-        <p>"backdrop_path"     => {{$movie['backdrop_path']}}</p>
-        <p>"original_language" => {{$movie['original_language']}}</p>
-        <p>"original_title"    => {{$movie['original_title']}}</p>
-        <p>"genre_ids"         => {{$movie['genre_ids'][0]}}</p>
-        <p>"title"             => {{$movie['title']}}</p>
-        <p>"vote_average"      => {{$movie['vote_average']}}</p>
-        <p>"overview"          => {{$movie['overview']}}</p>
-        <p>"release_date"      => {{$movie['release_date']}}</p>
-    @endforeach
+    <div class="row">
+        <div class="col-md-2">
+            filtros
+        </div>
+        <div class="col-md-10">
+            <div class="row">
+                @foreach($movies as $movie)
+                <div class="movieCard">
+                    <p>
+                        <canvas class="canvasPercentage" data-percentage="{{$movie['vote_average']}}" width="40" height="40"></canvas></br>
+                        "poster_path"       => {{$movie['poster_path']}}</br>
+                        "id"                => {{$movie['id']}}</br>
+                        "backdrop_path"     => {{$movie['backdrop_path']}}</br>
+                        "original_title"    => {{$movie['original_title']}}</br>
+                        "title"             => {{$movie['title']}}</br>
+                        "release_date"      => {{$movie['release_date']}}</br>
+                    </p>
+                </div>
+            @endforeach
+            </div>
+        </div>
+    </div>
 @endsection

@@ -12,6 +12,13 @@
 
 @import './navbar';
 
+@import './movieCard';
+
+@import './footer';
+
 body {
     background-color: $white;
+}
+.container {
+    max-width: 1200px;
 }

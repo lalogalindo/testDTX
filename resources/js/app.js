@@ -48,5 +48,5 @@ const drawPercentageCircle = (canvas) => {
 
 
 if( $('canvas').length > 0 ) {
-    $('canvas').each( (i,canvas)=> drawPercentageCircle(canvas) )
+    $('canvas').each( (i,canvas) => drawPercentageCircle(canvas) )
 }
