@@ -57,7 +57,8 @@ class Movies extends Controller
     {
         $options = [
             'page'=> 1,
-            'sort_by' => $request->input('sort_by')
+            'sort_by' => $request->input('sort_by'),
+            
         ];
         
         return view('layouts/listPage',[
