@@ -15818,6 +15818,10 @@ a.text-dark:focus {
   min-width: 1px;
 }
 
+.filterPanel {
+  margin-top: 30px;
+}
+
 .footer {
   background-image: radial-gradient(at 30% top, #031d33 0%, #032541 70%);
 }

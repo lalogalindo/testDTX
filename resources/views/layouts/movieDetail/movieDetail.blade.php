@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-9">
                 @include('layouts.movieDetail.castSection')
-                @include('layouts.movieDetail.recommendationSection')
+                {{-- @include('layouts.movieDetail.recommendationSection') --}}
             </div>
             <div class="col">dos</div>
         </div>

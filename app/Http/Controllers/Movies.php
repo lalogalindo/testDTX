@@ -55,14 +55,53 @@ class Movies extends Controller
 
     public function searchMovies(Request $request)
     {
+        $selectOptions = [
+            [
+                'id'    => 'popularity.desc',
+                'value' => 'Popularity Descending',
+            ],
+            [
+                'id'    => 'popularity.asc',
+                'value' => 'Popularity Ascending',
+            ],
+            [
+                'id'    => 'vote_average.desc',
+                'value' => 'Rating Descending',
+            ],
+            [
+                'id'    => 'vote_average.asc',
+                'value' => 'Rating Ascending',
+            ],
+            [
+                'id'    => 'primary_release_date.desc',
+                'value' => 'Release Date Descending',
+            ],
+            [
+                'id'    => 'primary_release_date.asc',
+                'value' => 'Release Date Ascending',
+            ],
+            [
+                'id'    => 'title.desc',
+                'value' => 'Title (Z-A)',
+            ],
+            [
+                'id'    => 'title.asc',
+                'value' => 'Title  (A-Z)',
+            ]
+        ];
+        
+        $sortBy = $request->input('sort_by');
         $options = [
-            'page'=> 1
+            'page'=> 1,
+            'sort_by' => $sortBy
         ];
         
         return view('layouts/listPage',[
-            'movies'       => $this->makeRequest('/discover/movie',$options),
-            'baseUrl'      => Cache::get('baseUrl'),
-            'poster_sizes' => Cache::get('posterSizes')
+            'movies'        => $this->makeRequest('/discover/movie',$options),
+            'selectOptions' => $selectOptions,
+            'sort_by'       => $sortBy,
+            'baseUrl'       => Cache::get('baseUrl'),
+            'poster_sizes'  => Cache::get('posterSizes')
         ]);
     }
 
