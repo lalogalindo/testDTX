@@ -11,6 +11,7 @@ class Movies extends Controller
     private $apiKey;
     private $baseUri;
 
+
     public function __construct()
     {
         $this->apiKey  = env('TMDB_API_KEY');
@@ -27,27 +28,40 @@ class Movies extends Controller
 
         $response = Http::get($this->baseUri.$method, ['api_key' => $this->apiKey]);
 
-        Cache::put('baseUrl', $response->json()['images']['base_url'], $seconds );
-        Cache::put('posterSizes', $response->json()['images']['poster_sizes'][3], $seconds );
+        Cache::put('baseUrl', $response['images']['base_url'], $seconds );
+        Cache::put('posterSizes', $response['images']['poster_sizes'][3], $seconds );
+        Cache::put('backdropSizes', $response['images']['backdrop_sizes'], $seconds);
         
         return redirect()->route('movie.list');
     }
 
-    public function listMovies()
-    {
+    private function makeRequest($method,$options) {
         if (!Cache::has('baseUrl')) {
             return redirect()->route('movie.home');
         }
+        $options = $options ?? [];
+        return Http::get($this->baseUri.$method,
+            array_merge(['api_key' => $this->apiKey],$options));
+    }
 
-        $method = '/movie/popular';
-
-        $response = Http::get($this->baseUri.$method,[
-            'api_key' => $this->apiKey,
-            'page'    => 1
-        ]);
-
+    public function listMovies()
+    {
         return view('layouts/listPage',[
-            'movies'       => $response->json()['results'],
+            'movies'       => $this->makeRequest('/discover/movie',['page'=> 1]),
+            'baseUrl'      => Cache::get('baseUrl'),
+            'poster_sizes' => Cache::get('posterSizes')
+        ]);
+    }
+
+    public function searchMovies(Request $request)
+    {
+        $options = [
+            'page'=> 1,
+            'sort_by' => $request->input('sort_by')
+        ];
+        
+        return view('layouts/listPage',[
+            'movies'       => $this->makeRequest('/discover/movie',$options),
             'baseUrl'      => Cache::get('baseUrl'),
             'poster_sizes' => Cache::get('posterSizes')
         ]);
@@ -55,9 +69,27 @@ class Movies extends Controller
 
     public function movieDetail($id)
     {
-        if (!Cache::has('baseUrl')) {
-            return redirect()->route('movie.home');
+        $movieDetails         = $this->makeRequest("/movie/{$id}",null);
+        $movieReleaseDates    = $this->makeRequest("/movie/{$id}/release_dates",null);
+        $movieCast            = $this->makeRequest("/movie/{$id}/credits",null);
+        $movieRecommendations = $this->makeRequest("/movie/{$id}/recommendations",null);
+
+        foreach ($movieReleaseDates['results'] as $releaseDates) {
+            if($releaseDates['iso_3166_1'] == "US") {
+                $certification = $releaseDates['release_dates'][0]['certification'];
+            }
         }
-        return view('layouts/movieDetail',['movieID' => $id]);
+
+        $certification = $certification ?? null;
+
+        return view('layouts/movieDetail/movieDetail',[
+            'movieDetails'         => $movieDetails,
+            'certification'        => $certification,
+            'movieCast'            => $movieCast,
+            'movieRecommendations' => $movieRecommendations,
+            'backdropSizes'        => Cache::get('backdropSizes'),
+            'baseUrl'              => Cache::get('baseUrl'),
+            'poster_sizes'         => Cache::get('posterSizes')
+        ]);
     }
 }

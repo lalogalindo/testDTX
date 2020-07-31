@@ -17,14 +17,13 @@
 		@section('navigationBar')
 			@include('components.navbar')
 		@show
-        <div class="container">
-            <div class="row">
-            </div>
-            @yield('content')
-		</div>
+		
+		@yield('content')
+		
 		@section('footer')
 			@include('components.footer')
 		@show
+		<script src="{{ mix('/js/blockui.js') }}"></script>
 		<script src="{{ mix('/js/app.js') }}"></script>
 	</body>
 </html>

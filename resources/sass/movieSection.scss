@@ -1,0 +1,163 @@
+#fakeImage {
+    display: none;
+}
+.movieSection {
+    border-bottom: 1px solid rgba(15.69%, 18.63%, 20.39%, 1.00);
+    background-position: right -200px top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 570px;
+
+    &__content {
+        height: 100%;
+        padding: 30px 40px;
+
+        .container { display: flex; }
+    }
+
+    &__poster {
+        &--image {
+            display: block;
+            min-width: 300px;
+            width: 300px;
+            height: 450px;
+            position: relative;
+            top: 0;
+            left: 0;
+            border-width: 0px;
+            overflow: hidden;
+            border-radius: 8px;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    &__details {
+        padding-left: 40px;
+        color: $white!important;
+
+        &--title {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-size: 2.2rem;
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+            font-weight: 700;
+            
+            .year {
+                opacity: 0.8;
+                font-weight: 400;
+            }
+        }
+
+        &--facts {
+            display: flex;
+            .certification {
+                display: inline-flex;
+                white-space: nowrap;
+                align-items: center;
+                align-content: center;
+                padding: 0.06em 4px 0.15em 4px !important;
+                border: 1px solid rgba(100.00%, 100.00%, 100.00%, 0.60);
+                color: rgba(100.00%, 100.00%, 100.00%, 0.60);
+                line-height: 1;
+                border-radius: 2px;
+                margin-right: 7px;
+            }
+            .bullet {
+                position: relative;
+                margin-left: 17px;
+                &::before {
+                    font-size: 1.1em;
+                    line-height: 1;
+                    content: "\2022";
+                    position: absolute;
+                    top: 3px;
+                    left: -13px;
+                    display: inline-block;
+                }
+                a,a:visited {
+                    color: $white;
+                }
+            }
+        }
+
+        &--actions {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            width: 100%;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            &-vote {
+                &-text {
+                    font-size: 16px;
+                    font-weight: 700;
+                    line-height: 1.1;
+                    max-width: 50px;
+                }
+            }
+            p { margin: 0; }
+            i {
+                box-sizing: border-box;
+                border-radius: 50%;
+                width: 46px;
+                height: 46px;
+                color: $white;
+                position: relative;
+                margin-left: 30px;
+                &:not(:last-child) {
+                    background-color: $tmdbDarkBlue;
+                }
+                &::before {
+                    position: absolute;
+                    margin: auto;
+                    width: 100%;
+                    text-align: center;
+                    top: 15px;
+                }
+            }
+            a {
+                display: flex;
+                align-items: center;
+                font-weight: 700px;
+                color: $white;
+            }
+        }
+        &--overview {
+            &-tagline {
+                margin-bottom: 0;
+                font-size: 1.1em;
+                font-weight: 400;
+                font-style: italic;
+                opacity: 0.7;
+            }
+            &-title {
+                font-weight: 600;
+                font-size: 1.3em;
+                width: 100%;
+                margin: 10px 0 8px 0;
+            }
+            &-summary {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            &-crew {
+                list-style-type: none;
+                list-style-position: inside;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                position: relative;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+}
