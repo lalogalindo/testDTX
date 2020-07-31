@@ -56,9 +56,7 @@ class Movies extends Controller
     public function searchMovies(Request $request)
     {
         $options = [
-            'page'=> 1,
-            'sort_by' => $request->input('sort_by'),
-            
+            'page'=> 1
         ];
         
         return view('layouts/listPage',[
