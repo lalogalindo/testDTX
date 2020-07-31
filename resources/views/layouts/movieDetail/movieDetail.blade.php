@@ -15,7 +15,7 @@
                 @include('layouts.movieDetail.castSection')
                 {{-- @include('layouts.movieDetail.recommendationSection') --}}
             </div>
-            <div class="col">dos</div>
+            <div class="col"></div>
         </div>
     </div>
 @endsection

@@ -4,6 +4,7 @@
     &__logo {
         width: 130px;
         height: 94px;
+        margin-right: 40px;
     }
 
     &__navigation {
@@ -16,8 +17,34 @@
     }
     
     &__menu {
-        &--item {
+        margin-right: 40px;
+        min-width: 0;
+        box-sizing: border-box;
+        &--title {
             color: $white;
+            line-height: 1;
+            font-size: 1.2em;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                line-height: 1.6em;
+                max-width: 260px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color: #fff;
+
+                a {
+                    font-size: 1em;
+                    color: #fff;
+                    text-decoration: none;
+                    font-weight: normal;
+                }
+            }
         }
     }
 }

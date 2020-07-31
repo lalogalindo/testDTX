@@ -15829,6 +15829,7 @@ a.text-dark:focus {
 .footer__logo {
   width: 130px;
   height: 94px;
+  margin-right: 40px;
 }
 
 .footer__navigation {
@@ -15840,8 +15841,38 @@ a.text-dark:focus {
   margin: auto;
 }
 
-.footer__menu--item {
+.footer__menu {
+  margin-right: 40px;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.footer__menu--title {
   color: #FFF;
+  line-height: 1;
+  font-size: 1.2em;
+}
+
+.footer__menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer__menu ul li {
+  line-height: 1.6em;
+  max-width: 260px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #fff;
+}
+
+.footer__menu ul li a {
+  font-size: 1em;
+  color: #fff;
+  text-decoration: none;
+  font-weight: normal;
 }
 
 body {

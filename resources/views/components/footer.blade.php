@@ -13,8 +13,8 @@
                 <li class="footer__menu--item"><a href="/documentation/api">API</a></li>
                 <li class="footer__menu--item"><a href="https://status.themoviedb.org/" target="_blank" rel="noopener">System Status</a></li>
             </ul>
-        </div>
-        <div>
+        </div class="footer__menu">
+        <div class="footer__menu">
             <h3 class="footer__menu--title">Get Involved</h3>
             <ul>
                 <li class="footer__menu--item"><a href="/bible"><span class="glyphicons glyphicons-asterisk"></span> Contribution Bible</a></li>
@@ -23,7 +23,7 @@
                 <li class="footer__menu--item"><a href="/tv/new">Add New TV Show</a></li>
             </ul>
         </div>
-        <div>
+        <div class="footer__menu">
             <h3 class="footer__menu--title">Community</h3>
             <ul>
                 <li class="footer__menu--item"><a href="/documentation/community/guidelines">Guidelines</a></li>
@@ -32,7 +32,7 @@
                 <li class="footer__menu--item"><a href="https://twitter.com/themoviedb" target="_blank" rel="noopener">Twitter</a></li>
             </ul>
         </div>
-        <div>
+        <div class="footer__menu">
             <h3 class="footer__menu--title">Legal</h3>
             <ul>
                 <li class="footer__menu--item"><a href="/documentation/website/terms-of-use">Terms of Use</a></li>

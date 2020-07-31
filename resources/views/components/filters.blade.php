@@ -3,7 +3,7 @@
         @csrf
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Sort<i class="fas fa-chevron-right"></i></h5>
+                <h5 class="card-title">Sort</h5>
                 <select id="sort_by" name="sort_by" class="form-control">
                     @foreach ($selectOptions as $options)
                         <option value="{{$options['id']}}" {{($options['id'] == $sort_by) ? 'selected' : ''}} >{{$options['value']}}</option>

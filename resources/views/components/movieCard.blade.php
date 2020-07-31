@@ -1,6 +1,8 @@
 <div class="movieCard" data-id="{{$movie['id']}}">
     <div class="movieCard__image">
-        <img src="{{$baseUrl.$poster_sizes.$movie['poster_path']}}"/>
+        <a href="/movie/{{$movie['id']}}">
+            <img src="{{$baseUrl.$poster_sizes.$movie['poster_path']}}"/>
+        </a>
     </div>
     <div class="movieCard__content">
         <canvas class="movieCard__content--vote-average" data-percentage="{{$movie['vote_average']}}" width="38" height="38"></canvas></br>
